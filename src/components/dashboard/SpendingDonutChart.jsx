@@ -95,6 +95,7 @@ export default function SpendingDonutChart() {
           </div>
         </div>
       </div>
+      
 
       {/* Legend */}
       <ul className="flex flex-wrap gap-x-4 gap-y-2 mt-3 justify-center" aria-label="Spending breakdown legend" role="list">
