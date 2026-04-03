@@ -61,4 +61,7 @@ export const mockTransactions = [
 
   { id: "txn_056", date: "2025-04-01", description: "Salary Credit", amount: 90000, category: "Income", type: "income" },
   { id: "txn_057", date: "2025-04-02", description: "Zomato Order", amount: 450, category: "Food", type: "expense" },
+  { id: "txn_058", date: "2025-04-03", description: "House Party Catering", amount: 4500, category: "Food", type: "expense" },
+  { id: "txn_059", date: "2025-04-05", description: "BigBasket Bulk Order", amount: 3800, category: "Food", type: "expense" },
+  { id: "txn_060", date: "2025-04-06", description: "Weekend Brunch - Olive", amount: 2200, category: "Food", type: "expense" },
 ]

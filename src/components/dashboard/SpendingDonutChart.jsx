@@ -97,17 +97,28 @@ export default function SpendingDonutChart() {
       </div>
 
       {/* Legend */}
-      <div className="flex flex-wrap gap-x-4 gap-y-2 mt-3 justify-center">
-        {data.map((entry) => (
-          <div key={entry.name} className="flex items-center gap-1.5 text-xs">
-            <span
-              className="w-2.5 h-2.5 rounded-full shrink-0"
-              style={{ backgroundColor: entry.color }}
-            />
-            <span className="text-text-muted">{entry.name}</span>
-          </div>
+      <ul className="flex flex-wrap gap-x-4 gap-y-2 mt-3 justify-center" aria-label="Spending breakdown legend" role="list">
+        {data.map((entry, index) => (
+          <li key={entry.name}>
+            <button
+              type="button"
+              className="flex items-center gap-1.5 text-xs focus:outline-none focus:ring-2 focus:ring-primary rounded-sm cursor-default"
+              onMouseEnter={() => setActiveIndex(index)}
+              onMouseLeave={() => setActiveIndex(null)}
+              onFocus={() => setActiveIndex(index)}
+              onBlur={() => setActiveIndex(null)}
+              aria-label={`${entry.name}: ${formatCurrency(entry.value)}`}
+            >
+              <span
+                className="w-2.5 h-2.5 rounded-full shrink-0"
+                style={{ backgroundColor: entry.color }}
+                aria-hidden="true"
+              />
+              <span className="text-text-muted">{entry.name}</span>
+            </button>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   )
 }
@@ -132,6 +143,8 @@ function CustomTooltip({ active, payload, darkMode }) {
   if (!active || !payload?.length) return null
   return (
     <div
+      role="tooltip"
+      aria-live="polite"
       className={`px-3 py-2 border rounded-lg shadow-lg text-sm ${
         darkMode
           ? 'bg-surface-dark border-border-dark'
