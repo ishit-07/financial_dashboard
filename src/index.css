@@ -151,6 +151,10 @@ body {
 }
 
 /* Recharts overrides */
+.recharts-wrapper * {
+  outline: none !important;
+}
+
 .recharts-tooltip-wrapper {
   outline: none !important;
 }

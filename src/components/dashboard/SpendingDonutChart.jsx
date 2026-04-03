@@ -48,7 +48,7 @@ export default function SpendingDonutChart() {
 
   return (
     <div
-      className={`rounded-xl p-5 ${
+      className={`min-h-[320px] h-full flex flex-col rounded-xl p-5 ${
         darkMode
           ? 'bg-surface-dark border border-border-dark'
           : 'bg-surface-light border border-border-light'
@@ -58,10 +58,14 @@ export default function SpendingDonutChart() {
     >
       <h3 className="text-sm font-semibold mb-4">Spending by Category</h3>
 
-      <div className="relative">
-        <ResponsiveContainer width="100%" height={220}>
+      <div className="flex-1 min-h-0 relative">
+        <ResponsiveContainer width="100%" height="100%">
           <PieChart>
-            <Tooltip content={<CustomTooltip darkMode={darkMode} />} cursor={false} />
+            <Tooltip 
+              content={<CustomTooltip darkMode={darkMode} />} 
+              cursor={false} 
+              wrapperStyle={{ zIndex: 100 }}
+            />
             <Pie
               data={data}
               cx="50%"

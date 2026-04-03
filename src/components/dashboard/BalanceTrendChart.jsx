@@ -36,7 +36,7 @@ export default function BalanceTrendChart() {
 
   return (
     <div
-      className={`rounded-xl p-5 ${
+      className={`min-h-[320px] h-full flex flex-col rounded-xl p-5 ${
         darkMode
           ? 'bg-surface-dark border border-border-dark'
           : 'bg-surface-light border border-border-light'
@@ -45,7 +45,8 @@ export default function BalanceTrendChart() {
       id="balance-trend-chart"
     >
       <h3 className="text-sm font-semibold mb-4">Balance Trend</h3>
-      <ResponsiveContainer width="100%" height={240}>
+      <div className="flex-1 min-h-0">
+        <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={data} margin={{ top: 5, right: 10, left: 0, bottom: 0 }}>
           <defs>
             <linearGradient id="balanceGradient" x1="0" y1="0" x2="0" y2="1">
@@ -63,6 +64,7 @@ export default function BalanceTrendChart() {
             axisLine={false}
             tickLine={false}
             tick={{ fontSize: 12, fill: '#94A3B8' }}
+            minTickGap={20}
           />
           <YAxis
             axisLine={false}
@@ -88,6 +90,7 @@ export default function BalanceTrendChart() {
           />
         </AreaChart>
       </ResponsiveContainer>
+      </div>
     </div>
   )
 }

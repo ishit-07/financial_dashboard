@@ -35,7 +35,7 @@ export default function MonthComparisonChart() {
   return (
     <div id="month-comparison-chart">
       <ResponsiveContainer width="100%" height={280}>
-        <BarChart data={data} margin={{ top: 5, right: 10, left: 0, bottom: 0 }}>
+        <BarChart data={data} margin={{ top: 5, right: 10, left: 0, bottom: 0 }} barGap={2} barCategoryGap="25%">
           <CartesianGrid
             strokeDasharray="3 3"
             stroke={darkMode ? '#2A2D3A' : '#E8ECF0'}
@@ -46,6 +46,7 @@ export default function MonthComparisonChart() {
             axisLine={false}
             tickLine={false}
             tick={{ fontSize: 12, fill: '#94A3B8' }}
+            minTickGap={10}
           />
           <YAxis
             axisLine={false}
@@ -59,18 +60,19 @@ export default function MonthComparisonChart() {
             formatter={(value) => (
               <span className="text-xs text-text-muted capitalize">{value}</span>
             )}
+            wrapperStyle={{ paddingTop: '10px' }}
           />
           <Bar
             dataKey="income"
             fill="#10B981"
             radius={[4, 4, 0, 0]}
-            maxBarSize={28}
+            maxBarSize={16}
           />
           <Bar
             dataKey="expense"
             fill="#F43F5E"
             radius={[4, 4, 0, 0]}
-            maxBarSize={28}
+            maxBarSize={16}
           />
         </BarChart>
       </ResponsiveContainer>

@@ -110,7 +110,7 @@ export default function AddEditModal({ isOpen, onClose, onSubmit, editData }) {
             className={`${inputClass} ${errors.amount ? errorInputClass : ''}`}
             placeholder="0"
             min="0"
-            step="1"
+            step="0.01"
             id="form-amount"
           />
           {errors.amount && (
@@ -184,6 +184,7 @@ export default function AddEditModal({ isOpen, onClose, onSubmit, editData }) {
         {/* Actions */}
         <div className="flex gap-3 pt-2">
           <Button
+            type="button"
             variant="ghost"
             className="flex-1"
             onClick={onClose}

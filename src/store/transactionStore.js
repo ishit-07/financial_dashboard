@@ -62,6 +62,6 @@ export const useTransactionStore = create(
           },
         })),
     }),
-    { name: 'zorvyn-transactions' }
+    { name: 'zorvyn-transactions-v2' }
   )
 )

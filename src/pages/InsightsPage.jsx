@@ -1,4 +1,5 @@
 import { useMemo } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useTransactionStore } from '../store/transactionStore'
 import { useUiStore } from '../store/uiStore'
 import {
@@ -12,10 +13,12 @@ import { formatCurrency, formatPercent, getCategoryIcon, getCategoryColor } from
 import InsightCard from '../components/insights/InsightCard'
 import MonthComparisonChart from '../components/insights/MonthComparisonChart'
 import AnomalyAlert from '../components/insights/AnomalyAlert'
+import EmptyState from '../components/ui/EmptyState'
 
 export default function InsightsPage() {
   const darkMode = useUiStore((s) => s.darkMode)
   const transactions = useTransactionStore((s) => s.transactions)
+  const navigate = useNavigate()
 
   const topCategory = useMemo(() => getTopCategory(transactions), [transactions])
   const comparison = useMemo(() => compareMonths(transactions), [transactions])
@@ -90,6 +93,19 @@ export default function InsightsPage() {
     }
     return result
   }, [foodPercent, entPercent, savingsRate])
+
+  if (transactions.length < 2) {
+    return (
+      <div className="page-enter max-w-7xl mx-auto flex items-center justify-center min-h-[70vh]">
+        <EmptyState
+          title="Insufficient Data"
+          description="We need a bit more history to generate meaningful insights. Try adding more transactions to unlock smart anomalies, month-over-month comparisons, and savings tips."
+          actionLabel="Add Transactions"
+          onAction={() => navigate('/transactions')}
+        />
+      </div>
+    )
+  }
 
   return (
     <div className="page-enter space-y-6 max-w-7xl mx-auto" id="insights-page">

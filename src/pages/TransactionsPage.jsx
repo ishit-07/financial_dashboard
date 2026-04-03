@@ -57,7 +57,7 @@ export default function TransactionsPage() {
   }, [])
 
   return (
-    <div className="page-enter space-y-5 max-w-7xl mx-auto" id="transactions-page">
+    <div className="page-enter space-y-5 max-w-7xl mx-auto pb-10" id="transactions-page">
       <FilterBar onAddClick={handleAdd} />
 
       <div

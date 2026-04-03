@@ -1,4 +1,5 @@
 import { useMemo, useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useTransactionStore } from '../store/transactionStore'
 import { useUiStore } from '../store/uiStore'
 import { useFilteredTransactions } from '../hooks/useFilteredTransactions'
@@ -9,12 +10,14 @@ import BalanceTrendChart from '../components/dashboard/BalanceTrendChart'
 import SpendingDonutChart from '../components/dashboard/SpendingDonutChart'
 import Badge from '../components/ui/Badge'
 import { SkeletonCard, SkeletonChart } from '../components/ui/Skeleton'
+import EmptyState from '../components/ui/EmptyState'
 
 export default function DashboardPage() {
   const darkMode = useUiStore((s) => s.darkMode)
   const transactions = useTransactionStore((s) => s.transactions)
   const { stats } = useFilteredTransactions()
   const [loading, setLoading] = useState(true)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 600)
@@ -54,6 +57,19 @@ export default function DashboardPage() {
         .slice(0, 5),
     [transactions]
   )
+
+  if (!loading && transactions.length === 0) {
+    return (
+      <div className="page-enter max-w-7xl mx-auto flex items-center justify-center min-h-[70vh]">
+        <EmptyState
+          title="Welcome to Zorvyn Finance"
+          description="It looks like you don't have any data yet. Start tracking your financial health by adding your first transaction."
+          actionLabel="Add Transaction"
+          onAction={() => navigate('/transactions')}
+        />
+      </div>
+    )
+  }
 
   return (
     <div className="page-enter space-y-6 max-w-7xl mx-auto" id="dashboard-page">

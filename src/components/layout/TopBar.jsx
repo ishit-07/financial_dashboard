@@ -47,11 +47,11 @@ export default function TopBar() {
       id="topbar"
     >
       {/* Left side */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 md:gap-3 min-w-0">
         {/* Sidebar toggle (desktop) */}
         <button
           onClick={toggleSidebar}
-          className="hidden md:flex p-2 rounded-lg text-text-muted hover:text-current transition-colors cursor-pointer"
+          className="hidden md:flex p-2 rounded-lg text-text-muted hover:text-current transition-colors cursor-pointer shrink-0"
           id="sidebar-toggle"
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -60,7 +60,7 @@ export default function TopBar() {
         </button>
 
         {/* Mobile logo */}
-        <div className="md:hidden flex items-center gap-2">
+        <div className="md:hidden flex items-center gap-2 shrink-0">
           <div className="w-7 h-7 rounded-lg bg-primary flex items-center justify-center">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
@@ -68,7 +68,7 @@ export default function TopBar() {
           </div>
         </div>
 
-        <h1 className="text-lg md:text-xl font-semibold">{title}</h1>
+        <h1 className="text-lg md:text-xl font-semibold truncate">{title}</h1>
       </div>
 
       {/* Right side */}

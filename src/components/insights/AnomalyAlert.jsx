@@ -15,7 +15,7 @@ export default function AnomalyAlert({ anomalies }) {
   if (anomalies.length === 0) {
     return (
       <div
-        className={`rounded-xl p-5 border ${
+        className={`rounded-xl p-3 sm:p-5 border ${
           darkMode
             ? 'bg-surface-dark border-border-dark'
             : 'bg-surface-light border-border-light'
@@ -24,7 +24,7 @@ export default function AnomalyAlert({ anomalies }) {
         id="anomaly-all-normal"
       >
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-success-muted flex items-center justify-center">
+          <div className="w-6 h-6 sm:w-10 sm:h-10 rounded-full bg-success-muted flex items-center justify-center">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2">
               <path d="M20 6L9 17l-5-5" />
             </svg>

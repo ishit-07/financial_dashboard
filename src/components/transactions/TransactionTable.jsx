@@ -128,31 +128,33 @@ export default function TransactionTable({ transactions, onEdit, onDelete, onAdd
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="flex items-center justify-between mt-4 px-1">
-          <p className="text-xs text-text-muted">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-4 px-4 pb-5">
+          <p className="text-xs text-text-muted text-center sm:text-left whitespace-nowrap">
             Showing {page * ROWS_PER_PAGE + 1}–
             {Math.min((page + 1) * ROWS_PER_PAGE, transactions.length)} of{' '}
             {transactions.length}
           </p>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-center gap-2 w-full sm:w-auto">
             <Button
-              variant="ghost"
+              variant="secondary"
               size="sm"
               onClick={() => setPage((p) => Math.max(0, p - 1))}
               disabled={page === 0}
               id="pagination-prev"
+              className="whitespace-nowrap"
             >
               ← Prev
             </Button>
-            <span className="text-xs text-text-muted px-2">
+            <span className="text-xs text-text-muted px-2 whitespace-nowrap">
               {page + 1} / {totalPages}
             </span>
             <Button
-              variant="ghost"
+              variant="secondary"
               size="sm"
               onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
               disabled={page === totalPages - 1}
               id="pagination-next"
+              className="whitespace-nowrap"
             >
               Next →
             </Button>
