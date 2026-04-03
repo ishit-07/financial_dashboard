@@ -2,67 +2,35 @@
 
 A production-quality Finance Dashboard web application built with modern React tools. Designed to help users track their income, expenses, and financial habits with a clean, SaaS-like interface inspired by modern enterprise tooling.
 
+## Features
+
+- **Instant Overview**: Dashboard with automated summary cards, progressive balance trends, and expense breakdown donut charts.
+- **Frictionless Tracking**: Full CRUD support for transactions via a responsive, validated modal.
+- **Advanced Filtering**: Filter transactions instantly by category, type, date range, and text search query.
+- **Actionable Insights**: Month-over-month comparisons, top spending categories, and programmatic anomaly detection.
+- **Role-Based Access (RBAC)**: Switch between 'Admin' (full write access) and 'Viewer' (read-only) modes instantly.
+- **Premium UI/UX**: Custom design system using Tailwind CSS v4 with dark mode, smooth micro-animations, Recharts tooltips, and toast notifications.
+- **Responsive**: Fully mathematically optimized for mobile, tablet, and desktop screens with adaptive flex/grid architecture.
+- **Data Export**: Export your raw transaction matrices to CSV in a single click.
+
 ## Assignment Requirements Fulfillment
 
-This repository has been comprehensively structured to meet and exceed the core evaluation criteria for the frontend dashboard assignment:
+This repository was specifically architected to meet and exceed the core assignment criteria:
+- **Dashboard Overview:** Implementations include calculating Total Balance, Income, and Expenses cards. Visualizations involve a 6-month Balance Trend Area Chart and a Categorical Spending Donut Chart.
+- **Transactions Management:** Displays a comprehensive interactive list with instant text-search, timeline bounds, category filtering, and sorting functionality via table headers.
+- **Simulated RBAC:** Instant toggling between `Admin` (grants full CRUD actions) and `Viewer` (forcefully removes all "Add/Edit/Delete" elements contextually from the UI).
+- **State Management:** Implemented via **Zustand**, isolating logic into highly scalable domain-specific stores (`transactionStore`, `uiStore`, `roleStore`), bypassing messy prop-drilling.
+- **Optional Enhancements Check:** Successfully integrated Dark Mode, `localStorage` Data Persistence, transition animations, CSV exporting, and advanced multidimensional filtering.
+- **Edge-Cases:** Features custom-built `EmptyState` splash screens that trigger immediately upon clearing a database or filtering a matrix out of bounds, avoiding broken charts.
 
-### 1. Dashboard Overview
-- **Summary Cards:** Real-time calculation of Total Balance, Income, and Expenses.
-- **Time-based Visualization:** Area chart mapping the progressive balance trend over the last 6 months.
-- **Categorical Visualization:** Interactive donut chart breaking down explicit spending categories.
-
-### 2. Transactions Section
-- **Data Table:** Comprehensive list of transactions rendering Date, Amount, Category, and Type.
-- **Interactive Controls:** Features a dedicated `FilterBar` enabling instant text-search, timeline bounds, and categorical isolation. Clickable headers allow for chronological and alphabetical sorting.
-
-### 3. Role-Based Access Control (RBAC)
-- **Top Navigation Switcher:** Seamlessly toggle between `Admin` and `Viewer` profiles.
-- **Admin Privileges:** Granted full CRUD capabilities. Add, Edit, and Delete transactions with form validation.
-- **Viewer Restrictions:** Strictly locked down to "Read-Only". Creation buttons vanish, and modification tools in the data table are forcefully removed.
-
-### 4. Insights Section
-- **Analytics View:** Specialized route highlighting the highest spending categories.
-- **Comparisons & Observations:** Features a comparative month-by-month bar chart, dynamic anomaly detection alerting users to unusual spikes in spending, and a savings rate tracker.
-
-### 5. State Management Approach
-- **Global Store:** Engineered using **Zustand** rather than prop-drilling or basic context.
-- **Domain Separation:** Logic is strictly separated into modular stores (`transactionStore`, `uiStore`, `roleStore`) for supreme scalability.
-
-### 6. UI & UX Aesthetics
-- **Responsive Architecture:** Fully optimized for mobile, tablet, and desktop screens using CSS flex/grid scaling. Charts handle overflow and label-clashing gracefully on micro-displays.
-- **Edge-Case Handling:** Custom-designed `EmptyState` pages warmly greet users whenever they wipe their databases or incorrectly filter matrices, preventing empty unstyled white screens.
-
----
-
-## Technical Stack & Enhancements (Bonus)
+## Architecture & Tech Stack
 
 - **Framework**: React 18 / Vite
-- **Styling**: Tailwind CSS v4 (using CSS Variables for theme tokens to avoid utility-class spaghetti).
-- **Dark Mode**: Flawless CSS-based theme toggle injected directly into the DOM tree.
-- **Data Persistence**: Zustand seamlessly syncs to the browser's `localStorage`, retaining state and settings across hard page refreshes.
-- **Animations**: Silky CSS keyframe animations for Modals, Toasters, and Filter Chips.
-- **Data Extensibility**: Built-in utility to export raw transaction databases directly into `.csv` spreadsheets.
-- **Automated QA**: Automated end-to-end framework test integrations implemented to guarantee structural integrity.
-
-## Setup Instructions
-
-1. **Clone the repository** and navigate to the project directory:
-   ```bash
-   git clone https://github.com/ishit-07/financial_dashboard.git
-   cd financial_dashboard
-   ```
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-3. **Run the development server**:
-   ```bash
-   npm run dev
-   ```
-4. **Build for production**:
-   ```bash
-   npm run build
-   ```
+- **Styling**: Tailwind CSS v4 (using root CSS Variables for strict theme tokens)
+- **State Management**: Zustand (with persistent browser storage)
+- **Routing**: React Router v6
+- **Charts**: Recharts (with accessibility fixes applied)
+- **Icons**: Lucide React
 
 ## Folder Structure
 
@@ -80,3 +48,37 @@ src/
 ├── store/               # Zustand memory modules
 └── utils/               # Formatting scripts and mathematical aggregators
 ```
+
+## Setup Instructions
+
+1. **Clone the repository** (if applicable) or navigate to the project directory.
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+3. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
+4. **Build for production**:
+   ```bash
+   npm run build
+   ```
+
+## Development Decisions & Polish
+
+- **State Management**: Chose Zustand for global state to avoid prop drilling and provide easy `localStorage` persistence. Stores are rigorously separated by domain.
+- **Styling**: Instead of basic utility classes scattered everywhere, `index.css` defines a strict set of design tokens (colors, shadows, radiuses) using Tailwind v4's `@theme` directive. Dark mode is fully integrated via class switching.
+- **Derived State**: Used `useMemo` heavily in the custom `useFilteredTransactions` hook and analytical aggregators to ensure high layout calculation performance even with massive transaction arrays.
+- **RBAC Security Simulation**: The `usePermission` custom hook evaluates the current active role and dynamically dictates which components, buttons, and datagrid columns are mathematically rendered to the DOM.
+
+## Screenshots
+
+![Dashboard Overview displaying total balance, income summary cards, an area-based balance trend chart, and a color-coded spending distribution donut chart](public/screenshot-dashboard.png)
+*The main dashboard overview showcasing fully responsive, beautifully styled data cards and Recharts analytics.*
+
+![Transactions Page demonstrating the advanced filter bar, dynamic data table with pagination, and Role-Based Access Control logic](public/screenshot-transactions.png)
+*The comprehensive transactions data matrix featuring instant search queries, categorical dropdown filters, and secure RBAC actions.*
+
+![Analytics Page highlighting the anomalous spending alerts, month-over-month comparative bar charts, and top spending category statistics](public/screenshot-insights.png)
+*The Insights tab providing deep-dive analytical breakdowns, logic-based automated anomaly detection alerts, and cross-month fiscal comparisons.*

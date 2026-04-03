@@ -1,7 +1,9 @@
+import { formatDate } from './formatters'
+
 export function exportToCSV(transactions) {
   const headers = ['Date', 'Description', 'Category', 'Type', 'Amount']
   const rows = transactions.map((t) =>
-    [t.date, `"${t.description}"`, t.category, t.type, t.amount].join(',')
+    [`"${formatDate(t.date)}"`, `"${t.description}"`, `"${t.category}"`, `"${t.type}"`, t.amount].join(',')
   )
   const csv = [headers.join(','), ...rows].join('\n')
   downloadFile(csv, 'transactions.csv', 'text/csv')
