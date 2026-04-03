@@ -1,0 +1,877 @@
+[
+  {
+    "id": "TC001",
+    "title": "Dashboard loads and shows primary overview content",
+    "description": "Verifies the dashboard renders summary metrics, charts, and recent activity preview.",
+    "category": "Dashboard Viewing",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the dashboard charts section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify overview summary metrics are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a recent transactions preview is displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "Dashboard spending donut chart shows tooltip on slice hover",
+    "description": "Verifies hovering a donut slice reveals contextual tooltip details.",
+    "category": "Dashboard Viewing",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the spending breakdown donut chart"
+      },
+      {
+        "type": "action",
+        "description": "Hover over a spending donut chart slice to reveal details"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a chart tooltip with slice details is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Dashboard balance trend chart renders historical trend visualization",
+    "description": "Verifies the balance trend chart is present to show historical balance movement.",
+    "category": "Dashboard Viewing",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the balance trend chart"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a balance trend chart is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify charted balance history is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "Dashboard handles empty or low-data state with guidance",
+    "description": "Verifies the dashboard shows an empty/low-data state and guidance when data is insufficient.",
+    "category": "Dashboard Viewing",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll through the dashboard overview and charts area"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an empty or low-data state is shown for charts or recent activity"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a guidance prompt to add transactions is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "Transactions page allows creating a new transaction end-to-end",
+    "description": "Verifies a user can add a transaction and see it appear in the list.",
+    "category": "Transaction Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /transactions"
+      },
+      {
+        "type": "action",
+        "description": "Initiate adding a new transaction"
+      },
+      {
+        "type": "action",
+        "description": "Fill \"Groceries E2E\" into the description field"
+      },
+      {
+        "type": "action",
+        "description": "Fill 42.35 into the amount field"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid category"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid transaction type"
+      },
+      {
+        "type": "action",
+        "description": "Fill a valid date into the date field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the transaction"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the transactions list contains \"Groceries E2E\""
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Transactions create flow shows validation then allows correction and save",
+    "description": "Verifies required/invalid fields block saving and can be corrected to save successfully.",
+    "category": "Transaction Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /transactions"
+      },
+      {
+        "type": "action",
+        "description": "Initiate adding a new transaction"
+      },
+      {
+        "type": "action",
+        "description": "Fill \"Invalid Amount Test\" into the description field"
+      },
+      {
+        "type": "action",
+        "description": "Fill an invalid amount into the amount field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the transaction"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a form validation error is visible"
+      },
+      {
+        "type": "action",
+        "description": "Fill 10.00 into the amount field"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid category"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid transaction type"
+      },
+      {
+        "type": "action",
+        "description": "Fill a valid date into the date field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the transaction"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the transactions list contains \"Invalid Amount Test\""
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "Edit an existing transaction and see updated values in the list",
+    "description": "Verifies a transaction can be edited and the updated description is shown in the table.",
+    "category": "Transaction Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /transactions"
+      },
+      {
+        "type": "action",
+        "description": "Initiate adding a new transaction"
+      },
+      {
+        "type": "action",
+        "description": "Fill \"Edit Me\" into the description field"
+      },
+      {
+        "type": "action",
+        "description": "Fill 15.00 into the amount field"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid category"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid transaction type"
+      },
+      {
+        "type": "action",
+        "description": "Fill a valid date into the date field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the transaction"
+      },
+      {
+        "type": "action",
+        "description": "Locate the transaction with description \"Edit Me\" in the list"
+      },
+      {
+        "type": "action",
+        "description": "Initiate editing the selected transaction"
+      },
+      {
+        "type": "action",
+        "description": "Fill \"Edited Name\" into the description field"
+      },
+      {
+        "type": "action",
+        "description": "Submit changes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the transactions list contains \"Edited Name\""
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "Edit flow blocks invalid data and cancel leaves original unchanged",
+    "description": "Verifies validation appears during edit and cancel preserves the last saved values.",
+    "category": "Transaction Management",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /transactions"
+      },
+      {
+        "type": "action",
+        "description": "Initiate adding a new transaction"
+      },
+      {
+        "type": "action",
+        "description": "Fill \"Cancel Edit Original\" into the description field"
+      },
+      {
+        "type": "action",
+        "description": "Fill 20.00 into the amount field"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid category"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid transaction type"
+      },
+      {
+        "type": "action",
+        "description": "Fill a valid date into the date field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the transaction"
+      },
+      {
+        "type": "action",
+        "description": "Locate the transaction with description \"Cancel Edit Original\" in the list"
+      },
+      {
+        "type": "action",
+        "description": "Initiate editing the selected transaction"
+      },
+      {
+        "type": "action",
+        "description": "Fill an invalid amount into the amount field"
+      },
+      {
+        "type": "action",
+        "description": "Submit changes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a form validation error is visible"
+      },
+      {
+        "type": "action",
+        "description": "Cancel editing"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the transactions list contains \"Cancel Edit Original\""
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "Delete a transaction after confirming removal",
+    "description": "Verifies confirming deletion removes the transaction from the list.",
+    "category": "Transaction Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /transactions"
+      },
+      {
+        "type": "action",
+        "description": "Initiate adding a new transaction"
+      },
+      {
+        "type": "action",
+        "description": "Fill \"Delete Me\" into the description field"
+      },
+      {
+        "type": "action",
+        "description": "Fill 9.99 into the amount field"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid category"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid transaction type"
+      },
+      {
+        "type": "action",
+        "description": "Fill a valid date into the date field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the transaction"
+      },
+      {
+        "type": "action",
+        "description": "Locate the transaction with description \"Delete Me\" in the list"
+      },
+      {
+        "type": "action",
+        "description": "Initiate deletion"
+      },
+      {
+        "type": "action",
+        "description": "Confirm deletion"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the transactions list does not contain \"Delete Me\""
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "Delete confirmation cancel keeps the transaction in the list",
+    "description": "Verifies canceling deletion leaves the transaction unchanged.",
+    "category": "Transaction Management",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /transactions"
+      },
+      {
+        "type": "action",
+        "description": "Initiate adding a new transaction"
+      },
+      {
+        "type": "action",
+        "description": "Fill \"Do Not Delete\" into the description field"
+      },
+      {
+        "type": "action",
+        "description": "Fill 5.55 into the amount field"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid category"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid transaction type"
+      },
+      {
+        "type": "action",
+        "description": "Fill a valid date into the date field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the transaction"
+      },
+      {
+        "type": "action",
+        "description": "Locate the transaction with description \"Do Not Delete\" in the list"
+      },
+      {
+        "type": "action",
+        "description": "Initiate deletion"
+      },
+      {
+        "type": "action",
+        "description": "Cancel deletion"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the transactions list contains \"Do Not Delete\""
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "Filter transactions by search and filters, then clear to restore full list",
+    "description": "Verifies search/filter controls narrow results and clearing restores the full table.",
+    "category": "Transaction Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /transactions"
+      },
+      {
+        "type": "action",
+        "description": "Initiate adding a new transaction"
+      },
+      {
+        "type": "action",
+        "description": "Fill \"Filter Alpha\" into the description field"
+      },
+      {
+        "type": "action",
+        "description": "Fill 11.11 into the amount field"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid category"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid transaction type"
+      },
+      {
+        "type": "action",
+        "description": "Fill a valid date into the date field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the transaction"
+      },
+      {
+        "type": "action",
+        "description": "Initiate adding a new transaction"
+      },
+      {
+        "type": "action",
+        "description": "Fill \"Filter Beta\" into the description field"
+      },
+      {
+        "type": "action",
+        "description": "Fill 22.22 into the amount field"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid category"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid transaction type"
+      },
+      {
+        "type": "action",
+        "description": "Fill a valid date into the date field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the transaction"
+      },
+      {
+        "type": "action",
+        "description": "Use search to filter transactions by text \"Filter Alpha\""
+      },
+      {
+        "type": "action",
+        "description": "Apply a category filter"
+      },
+      {
+        "type": "action",
+        "description": "Apply a transaction type filter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the transactions list results match the applied filters and search"
+      },
+      {
+        "type": "action",
+        "description": "Click the control to clear all filters"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the transactions list contains both \"Filter Alpha\" and \"Filter Beta\""
+      }
+    ]
+  },
+  {
+    "id": "TC012",
+    "title": "No-results state appears for restrictive filters and recovers when cleared",
+    "description": "Verifies the table shows a no-results state and returns after adjusting filters.",
+    "category": "Transaction Management",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /transactions"
+      },
+      {
+        "type": "action",
+        "description": "Use search to filter transactions by text that matches no items"
+      },
+      {
+        "type": "action",
+        "description": "Apply filters that yield no results"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a no transactions found state is displayed"
+      },
+      {
+        "type": "action",
+        "description": "Click the control to clear all filters"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the transactions list is restored to showing available transactions"
+      }
+    ]
+  },
+  {
+    "id": "TC013",
+    "title": "Insights page loads and shows comparisons, rankings, and anomalies content",
+    "description": "Verifies the insights page renders core analytical sections and anomaly/tips area.",
+    "category": "Financial Insights",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /insights"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the month-over-month comparison section"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the top spending categories section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify month-over-month income vs expense numbers are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify top spending category rankings or progress bars are displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC014",
+    "title": "Acknowledge or dismiss an anomaly alert in insights",
+    "description": "Verifies an anomaly alert can be dismissed/acknowledged from the UI.",
+    "category": "Financial Insights",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /insights"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the anomaly alerts section"
+      },
+      {
+        "type": "action",
+        "description": "Acknowledge or dismiss an anomaly alert"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the acknowledged or dismissed anomaly alert is no longer shown"
+      }
+    ]
+  },
+  {
+    "id": "TC015",
+    "title": "Insights shows insufficient-data notice when history is too short",
+    "description": "Verifies the insights page can present an insufficient-data notice and guidance.",
+    "category": "Financial Insights",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /insights"
+      },
+      {
+        "type": "action",
+        "description": "Scroll through the insights content area"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an insufficient-data notice is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify guidance to add more transactions or expand the date range is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC016",
+    "title": "Persist Dark theme across reload",
+    "description": "Verifies switching to Dark theme applies app-wide and persists after a page reload.",
+    "category": "Global Interactivity (Theme & Role)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Toggle theme to Dark"
+      },
+      {
+        "type": "action",
+        "description": "Reload the page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the app is displayed in dark theme"
+      }
+    ]
+  },
+  {
+    "id": "TC017",
+    "title": "Switch back to Light theme",
+    "description": "Verifies switching the theme back to Light applies across the app.",
+    "category": "Global Interactivity (Theme & Role)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Toggle theme to Dark"
+      },
+      {
+        "type": "action",
+        "description": "Toggle theme back to Light"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the app is displayed in light theme"
+      }
+    ]
+  },
+  {
+    "id": "TC018",
+    "title": "Viewer role hides or disables editing and destructive actions across the app",
+    "description": "Verifies switching to Viewer reduces UI affordances for editing/deleting in transaction management areas.",
+    "category": "Global Interactivity (Theme & Role)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Switch role to Viewer"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to view transactions"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify transaction editing and destructive actions are hidden or disabled"
+      }
+    ]
+  },
+  {
+    "id": "TC019",
+    "title": "Viewer role cannot initiate editing on a transaction",
+    "description": "Verifies a Viewer cannot access transaction editing from the transactions list.",
+    "category": "Global Interactivity (Theme & Role)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Switch role to Viewer"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to view transactions"
+      },
+      {
+        "type": "action",
+        "description": "Attempt to initiate editing on a transaction"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the transaction editing option is not available or is disabled"
+      }
+    ]
+  },
+  {
+    "id": "TC020",
+    "title": "Admin role re-enables editing and destructive actions",
+    "description": "Verifies switching to Admin restores edit/delete affordances in transaction management areas.",
+    "category": "Global Interactivity (Theme & Role)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Switch role to Viewer"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to view transactions"
+      },
+      {
+        "type": "action",
+        "description": "Switch role to Admin"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify transaction editing and destructive actions are available"
+      }
+    ]
+  },
+  {
+    "id": "TC021",
+    "title": "Theme setting remains consistent when navigating between pages",
+    "description": "Verifies the chosen theme remains applied when moving across dashboard, transactions, and insights pages.",
+    "category": "Global Interactivity (Theme & Role)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Toggle theme to Dark"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to view transactions"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to view insights"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the app is displayed in dark theme"
+      }
+    ]
+  },
+  {
+    "id": "TC022",
+    "title": "Role setting remains consistent when navigating between pages",
+    "description": "Verifies the selected role persists across page navigation within the app session.",
+    "category": "Global Interactivity (Theme & Role)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Switch role to Viewer"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to view transactions"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to view insights"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to view transactions"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify transaction editing and destructive actions are hidden or disabled"
+      }
+    ]
+  },
+  {
+    "id": "TC023",
+    "title": "Reload retains Viewer role restrictions",
+    "description": "Verifies that after switching to Viewer, reloading keeps editing/destructive actions restricted.",
+    "category": "Global Interactivity (Theme & Role)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Switch role to Viewer"
+      },
+      {
+        "type": "action",
+        "description": "Reload the page"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to view transactions"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify transaction editing and destructive actions are hidden or disabled"
+      }
+    ]
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:4175",
+  "executionArgs": {
+    "projectName": "zorvynFinancialDashboard",
+    "projectPath": "f:\\Assignment\\zorvynFinancialDashboard",
+    "testIds": [],
+    "additionalInstruction": "",
+    "serverMode": "production",
+    "envs": {
+      "API_KEY": "sk-user-QhZrGGs36_LwRrqfyaIWjP-vVYmnvrI-tLUeek0WIGa2fhUthOK-FAkjN7dyp4a-hBmWxiaOpCu1pDxY9REHyFgQUxvAS7nPehEx6__BuwB0cEsYreM6_DFqiugz5rcZX2o"
+    }
+  },
+  "serverPort": 51715,
+  "proxy": "http://5665d320-9676-4b33-98a3-39f287de1782:Z7EWifzNghDVu6zkQoyAWdNqp1gNmlVM@tun.testsprite.com:8080"
+}
